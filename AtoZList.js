@@ -36,7 +36,8 @@ export default class AtoZList extends Component {
   };
 
   static defaultProps = {
-    containerStyle: {}
+    containerStyle: {},
+    displayAlphabet: false
   }
 
   constructor(props, context) {
@@ -74,6 +75,9 @@ export default class AtoZList extends Component {
 
 
   render() {
+
+    const { displayAlphabet } = this.props;
+
     this._alphabetInstance = this._alphabetInstance || (
       <View style={styles.alphabetSidebar}>
         <AlphabetPicker alphabet={this.state.alphabet} onTouchLetter={this._onTouchLetter.bind(this)} />
@@ -98,7 +102,7 @@ export default class AtoZList extends Component {
           />
         </View>
 
-        {this._alphabetInstance}
+        {displayAlphabet && this._alphabetInstance}
       </View>
     );
   }
